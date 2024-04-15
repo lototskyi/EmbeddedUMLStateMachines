@@ -101,9 +101,8 @@ static event_status_t protimer_state_handler_TIME_SET(protimer_t *const mobj, ev
                 mobj->curr_time -= 60;
                 display_time(mobj->curr_time);
                 return EVENT_HANDLED;
-            
+            }
             return EVENT_IGNORED;
-        }
         case ABRT:
             mobj->active_state = IDLE;
             return EVENT_TRANSITION;
@@ -112,9 +111,8 @@ static event_status_t protimer_state_handler_TIME_SET(protimer_t *const mobj, ev
             if (mobj->curr_time >= 60) {
                 mobj->active_state = COUNTDOWN;
                 return EVENT_TRANSITION;
-            
+            }
             return EVENT_IGNORED;
-        }
     }
 
     return EVENT_IGNORED;
@@ -172,9 +170,8 @@ static event_status_t protimer_state_handler_PAUSE(protimer_t *const mobj, event
                 mobj->curr_time -= 60;
                 mobj->active_state = TIME_SET;
                 return EVENT_TRANSITION;
-            
+            }
             return EVENT_IGNORED;
-        }
         case START_PAUSE:
             mobj->active_state = COUNTDOWN;
             return EVENT_TRANSITION;
